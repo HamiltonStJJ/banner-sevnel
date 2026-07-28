@@ -1,4 +1,6 @@
-<!doctype html>
+from pathlib import Path
+
+html = """<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -10,7 +12,6 @@
     :root {
       --bg-1: #050507;
       --bg-2: #0b0711;
-      --panel: rgba(255, 255, 255, 0.045);
       --line: rgba(255, 255, 255, 0.10);
       --text: #ffffff;
       --muted: rgba(255, 255, 255, 0.66);
@@ -141,28 +142,6 @@
       line-height: 1.5;
     }
 
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin-top: 18px;
-    }
-
-    .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      min-height: 32px;
-      padding: 7px 10px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 10px;
-      color: rgba(255, 255, 255, 0.78);
-      background: var(--panel);
-      font-size: 12px;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-    }
-
     .visual {
       position: relative;
       min-height: 210px;
@@ -218,37 +197,6 @@
       transform: rotateX(72deg) rotateZ(-23deg);
     }
 
-    .brand {
-      position: absolute;
-      right: 26px;
-      bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: rgba(255, 255, 255, 0.92);
-      font-size: 15px;
-      font-weight: 800;
-      letter-spacing: 0.08em;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 1px solid rgba(213, 111, 255, 0.42);
-      border-radius: 10px;
-      background:
-        linear-gradient(
-          145deg,
-          rgba(176, 38, 255, 0.50),
-          rgba(0, 0, 0, 0.80)
-        );
-      box-shadow: 0 0 18px rgba(176, 38, 255, 0.24);
-      font-size: 16px;
-      letter-spacing: 0;
-    }
-
     @keyframes float {
       0%,
       100% {
@@ -291,10 +239,6 @@
         height: 160px;
       }
 
-      .brand {
-        display: none;
-      }
-
       .subtitle {
         max-width: 82%;
       }
@@ -320,27 +264,10 @@
         Aquí tienes el pulso de tu negocio en tiempo real. Revisa tus
         oportunidades, conversiones y resultados desde un solo lugar.
       </p>
-
-      <div class="meta">
-        <span class="chip">
-          📅
-          <span id="date">—</span>
-        </span>
-
-        <span class="chip">
-          🕒
-          <span id="time">—</span>
-        </span>
-      </div>
     </div>
 
     <div class="visual" aria-hidden="true">
       <div class="orb"></div>
-
-      <div class="brand">
-        <span class="brand-mark">7</span>
-        SEVNEL
-      </div>
     </div>
   </section>
 
@@ -353,16 +280,9 @@
 
       const greetingElement = document.getElementById("greeting");
       const nameElement = document.getElementById("name");
-      const dateElement = document.getElementById("date");
-      const timeElement = document.getElementById("time");
 
-      function updateBanner() {
-        /*
-         * new Date() toma automáticamente la fecha y hora local
-         * de la computadora o celular que está viendo el banner.
-         */
-        const now = new Date();
-        const localHour = now.getHours();
+      function updateGreeting() {
+        const localHour = new Date().getHours();
 
         let greeting = "Buenas noches";
 
@@ -374,27 +294,22 @@
 
         greetingElement.textContent = greeting;
         nameElement.textContent = name;
-
-        dateElement.textContent = new Intl.DateTimeFormat("es", {
-          weekday: "long",
-          day: "numeric",
-          month: "long"
-        }).format(now);
-
-        timeElement.textContent = new Intl.DateTimeFormat("es", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false
-        }).format(now);
       }
 
-      updateBanner();
+      updateGreeting();
 
       /*
-       * Actualiza la hora cada 30 segundos.
+       * Revisa periódicamente si debe cambiar el saludo,
+       * sin mostrar fecha ni hora en pantalla.
        */
-      window.setInterval(updateBanner, 30000);
+      window.setInterval(updateGreeting, 60000);
     })();
   </script>
 </body>
 </html>
+"""
+
+path = Path("/mnt/data/banner-sevnel-sin-fecha-hora-logo.html")
+path.write_text(html, encoding="utf-8")
+
+print(path)
