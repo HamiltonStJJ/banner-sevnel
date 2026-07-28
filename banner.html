@@ -1,6 +1,4 @@
-from pathlib import Path
-
-html = """<!doctype html>
+<!doctype html>
 <html lang="es">
 <head>
   <meta charset="utf-8" />
@@ -29,7 +27,9 @@ html = """<!doctype html>
       width: 100%;
       height: 100%;
       margin: 0;
+
       background: transparent;
+
       font-family:
         Inter,
         ui-sans-serif,
@@ -48,14 +48,16 @@ html = """<!doctype html>
     .banner {
       position: relative;
       isolation: isolate;
+
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(210px, 34%);
+
       width: 100%;
       min-height: 210px;
       overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: 22px;
+
       color: var(--text);
+
       background:
         radial-gradient(
           circle at 15% 10%,
@@ -73,6 +75,10 @@ html = """<!doctype html>
           var(--bg-1) 48%,
           #010102 100%
         );
+
+      border: 1px solid var(--line);
+      border-radius: 22px;
+
       box-shadow:
         0 24px 60px rgba(0, 0, 0, 0.42),
         inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -80,11 +86,14 @@ html = """<!doctype html>
 
     .banner::before {
       content: "";
+
       position: absolute;
       inset: 0;
       z-index: -1;
+
       pointer-events: none;
       opacity: 0.18;
+
       background-image:
         linear-gradient(
           rgba(255, 255, 255, 0.05) 1px,
@@ -95,7 +104,9 @@ html = """<!doctype html>
           rgba(255, 255, 255, 0.05) 1px,
           transparent 1px
         );
+
       background-size: 34px 34px;
+
       mask-image:
         linear-gradient(
           90deg,
@@ -108,21 +119,24 @@ html = """<!doctype html>
       display: flex;
       flex-direction: column;
       justify-content: center;
+
       min-width: 0;
       padding: 28px 30px;
     }
 
     h1 {
-      margin: 0;
       max-width: 780px;
+      margin: 0;
+
       font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 760;
       line-height: 1.02;
       letter-spacing: -0.045em;
-      font-weight: 760;
     }
 
     .gradient {
       color: transparent;
+
       background:
         linear-gradient(
           90deg,
@@ -130,6 +144,7 @@ html = """<!doctype html>
           #d99cff 55%,
           #7ff3ff 100%
         );
+
       background-clip: text;
       -webkit-background-clip: text;
     }
@@ -137,13 +152,16 @@ html = """<!doctype html>
     .subtitle {
       max-width: 680px;
       margin: 12px 0 0;
+
       color: var(--muted);
+
       font-size: clamp(13px, 1.55vw, 16px);
       line-height: 1.5;
     }
 
     .visual {
       position: relative;
+
       min-height: 210px;
       overflow: hidden;
     }
@@ -152,10 +170,14 @@ html = """<!doctype html>
       position: absolute;
       top: 50%;
       right: 8%;
+
       width: 180px;
       height: 180px;
+
       transform: translateY(-50%);
+
       border-radius: 50%;
+
       background:
         radial-gradient(
           circle at 35% 30%,
@@ -172,29 +194,44 @@ html = """<!doctype html>
           rgba(0, 229, 255, 0.78),
           transparent 30%
         ),
-        linear-gradient(145deg, #51127a, #06070a 68%);
+        linear-gradient(
+          145deg,
+          #51127a,
+          #06070a 68%
+        );
+
       box-shadow:
         0 0 70px rgba(176, 38, 255, 0.22),
         0 0 48px rgba(0, 229, 255, 0.12),
         inset -20px -24px 44px rgba(0, 0, 0, 0.46),
         inset 10px 10px 24px rgba(255, 255, 255, 0.10);
+
       animation: float 5.6s ease-in-out infinite;
     }
 
     .orb::before,
     .orb::after {
       content: "";
+
       position: absolute;
       inset: -20px;
+
       border: 1px solid rgba(197, 107, 255, 0.28);
       border-radius: 50%;
-      transform: rotateX(66deg) rotateZ(18deg);
+
+      transform:
+        rotateX(66deg)
+        rotateZ(18deg);
     }
 
     .orb::after {
       inset: -40px;
+
       border-color: rgba(0, 229, 255, 0.18);
-      transform: rotateX(72deg) rotateZ(-23deg);
+
+      transform:
+        rotateX(72deg)
+        rotateZ(-23deg);
     }
 
     @keyframes float {
@@ -223,18 +260,21 @@ html = """<!doctype html>
       .content {
         position: relative;
         z-index: 2;
+
         padding: 24px 22px;
       }
 
       .visual {
         position: absolute;
         inset: 0 0 0 auto;
+
         width: 44%;
         opacity: 0.46;
       }
 
       .orb {
         right: -28%;
+
         width: 160px;
         height: 160px;
       }
@@ -298,18 +338,8 @@ html = """<!doctype html>
 
       updateGreeting();
 
-      /*
-       * Revisa periódicamente si debe cambiar el saludo,
-       * sin mostrar fecha ni hora en pantalla.
-       */
       window.setInterval(updateGreeting, 60000);
     })();
   </script>
 </body>
 </html>
-"""
-
-path = Path("/mnt/data/banner-sevnel-sin-fecha-hora-logo.html")
-path.write_text(html, encoding="utf-8")
-
-print(path)
