@@ -52,224 +52,11 @@
 
     .page {
       display: grid;
-      grid-template-rows: 210px 255px;
+      grid-template-rows: 255px 210px;
       gap: 14px;
 
       width: 100%;
       min-height: 479px;
-    }
-
-    /* ========================================================= */
-    /* BANNER SUPERIOR                                           */
-    /* ========================================================= */
-
-    .banner {
-      position: relative;
-      isolation: isolate;
-
-      display: grid;
-      grid-template-columns:
-        minmax(0, 1fr)
-        minmax(210px, 34%);
-
-      width: 100%;
-      height: 210px;
-      overflow: hidden;
-
-      color: var(--text);
-
-      background:
-        radial-gradient(
-          circle at 15% 10%,
-          rgba(176, 38, 255, 0.24),
-          transparent 34%
-        ),
-        radial-gradient(
-          circle at 90% 25%,
-          rgba(0, 229, 255, 0.13),
-          transparent 28%
-        ),
-        linear-gradient(
-          135deg,
-          var(--bg-2) 0%,
-          var(--bg-1) 48%,
-          #010102 100%
-        );
-
-      border: 1px solid var(--line);
-      border-radius: 22px;
-
-      box-shadow:
-        0 24px 60px rgba(0, 0, 0, 0.42),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
-    }
-
-    .banner::before {
-      content: "";
-
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-
-      pointer-events: none;
-      opacity: 0.18;
-
-      background-image:
-        linear-gradient(
-          rgba(255, 255, 255, 0.05) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255, 255, 255, 0.05) 1px,
-          transparent 1px
-        );
-
-      background-size: 34px 34px;
-
-      mask-image:
-        linear-gradient(
-          90deg,
-          rgba(0, 0, 0, 0.70),
-          transparent 78%
-        );
-    }
-
-    .content {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      min-width: 0;
-      padding: 28px 30px;
-    }
-
-    h1 {
-      max-width: 780px;
-      margin: 0;
-
-      font-size: clamp(28px, 4.5vw, 48px);
-      font-weight: 760;
-      line-height: 1.02;
-      letter-spacing: -0.045em;
-    }
-
-    .gradient {
-      color: transparent;
-
-      background:
-        linear-gradient(
-          90deg,
-          #ffffff 0%,
-          #d99cff 55%,
-          #7ff3ff 100%
-        );
-
-      background-clip: text;
-      -webkit-background-clip: text;
-    }
-
-    .subtitle {
-      max-width: 680px;
-      margin: 12px 0 0;
-
-      color: var(--muted);
-
-      font-size: clamp(13px, 1.55vw, 16px);
-      line-height: 1.5;
-    }
-
-    .visual {
-      position: relative;
-
-      min-height: 210px;
-      overflow: hidden;
-    }
-
-    .orb {
-      position: absolute;
-      top: 50%;
-      right: 8%;
-
-      width: 180px;
-      height: 180px;
-
-      transform: translateY(-50%);
-
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle at 35% 30%,
-          rgba(255, 255, 255, 0.42),
-          transparent 10%
-        ),
-        radial-gradient(
-          circle at 35% 35%,
-          rgba(213, 111, 255, 0.90),
-          transparent 26%
-        ),
-        radial-gradient(
-          circle at 68% 65%,
-          rgba(0, 229, 255, 0.78),
-          transparent 30%
-        ),
-        linear-gradient(
-          145deg,
-          #51127a,
-          #06070a 68%
-        );
-
-      box-shadow:
-        0 0 70px rgba(176, 38, 255, 0.22),
-        0 0 48px rgba(0, 229, 255, 0.12),
-        inset -20px -24px 44px rgba(0, 0, 0, 0.46),
-        inset 10px 10px 24px rgba(255, 255, 255, 0.10);
-
-      animation:
-        orbFloat 5.6s ease-in-out infinite;
-    }
-
-    .orb::before,
-    .orb::after {
-      content: "";
-
-      position: absolute;
-      inset: -20px;
-
-      border: 1px solid rgba(197, 107, 255, 0.28);
-      border-radius: 50%;
-
-      transform:
-        rotateX(66deg)
-        rotateZ(18deg);
-    }
-
-    .orb::after {
-      inset: -40px;
-
-      border-color: rgba(0, 229, 255, 0.18);
-
-      transform:
-        rotateX(72deg)
-        rotateZ(-23deg);
-    }
-
-    @keyframes orbFloat {
-      0%,
-      100% {
-        transform:
-          translateY(-50%)
-          translateY(0)
-          rotate(0deg);
-      }
-
-      50% {
-        transform:
-          translateY(-50%)
-          translateY(-8px)
-          rotate(2deg);
-      }
     }
 
     /* ========================================================= */
@@ -436,7 +223,7 @@
     }
 
     /* ========================================================= */
-    /* PARTÍCULAS QUE ENTRAN                                     */
+    /* PARTÍCULAS DE ENTRADA                                     */
     /* ========================================================= */
 
     .particle {
@@ -448,7 +235,6 @@
       height: var(--size);
 
       opacity: 0;
-
       border-radius: 50%;
 
       background:
@@ -472,6 +258,7 @@
     @keyframes particleEnter {
       0% {
         opacity: 0;
+
         transform:
           translateX(0)
           translateY(var(--offset))
@@ -488,6 +275,7 @@
 
       100% {
         opacity: 0;
+
         transform:
           translateX(calc(50vw - 58px))
           translateY(0)
@@ -789,7 +577,6 @@
       height: 2px;
 
       opacity: 0;
-
       border-radius: 999px;
 
       background:
@@ -814,6 +601,7 @@
     @keyframes sparkExit {
       0% {
         opacity: 0;
+
         transform:
           translateX(0)
           translateY(0)
@@ -831,6 +619,7 @@
 
       100% {
         opacity: 0;
+
         transform:
           translateX(44vw)
           translateY(var(--travel-y))
@@ -945,13 +734,249 @@
     }
 
     /* ========================================================= */
+    /* BANNER DE SALUDO                                          */
+    /* ========================================================= */
+
+    .banner {
+      position: relative;
+      isolation: isolate;
+
+      display: grid;
+      grid-template-columns:
+        minmax(0, 1fr)
+        minmax(210px, 34%);
+
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 15% 10%,
+          rgba(176, 38, 255, 0.24),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 90% 25%,
+          rgba(0, 229, 255, 0.13),
+          transparent 28%
+        ),
+        linear-gradient(
+          135deg,
+          var(--bg-2) 0%,
+          var(--bg-1) 48%,
+          #010102 100%
+        );
+
+      border: 1px solid var(--line);
+      border-radius: 22px;
+
+      box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    }
+
+    .banner::before {
+      content: "";
+
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+
+      pointer-events: none;
+      opacity: 0.18;
+
+      background-image:
+        linear-gradient(
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px
+        ),
+        linear-gradient(
+          90deg,
+          rgba(255, 255, 255, 0.05) 1px,
+          transparent 1px
+        );
+
+      background-size: 34px 34px;
+
+      mask-image:
+        linear-gradient(
+          90deg,
+          rgba(0, 0, 0, 0.70),
+          transparent 78%
+        );
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      min-width: 0;
+      padding: 28px 30px;
+    }
+
+    h1 {
+      max-width: 780px;
+      margin: 0;
+
+      font-size: clamp(28px, 4.5vw, 48px);
+      font-weight: 760;
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+    }
+
+    .gradient {
+      color: transparent;
+
+      background:
+        linear-gradient(
+          90deg,
+          #ffffff 0%,
+          #d99cff 55%,
+          #7ff3ff 100%
+        );
+
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 12px 0 0;
+
+      color: var(--muted);
+
+      font-size: clamp(13px, 1.55vw, 16px);
+      line-height: 1.5;
+    }
+
+    .visual {
+      position: relative;
+
+      min-height: 210px;
+      overflow: hidden;
+    }
+
+    .orb {
+      position: absolute;
+      top: 50%;
+      right: 8%;
+
+      width: 180px;
+      height: 180px;
+
+      transform: translateY(-50%);
+      border-radius: 50%;
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          rgba(255, 255, 255, 0.42),
+          transparent 10%
+        ),
+        radial-gradient(
+          circle at 35% 35%,
+          rgba(213, 111, 255, 0.90),
+          transparent 26%
+        ),
+        radial-gradient(
+          circle at 68% 65%,
+          rgba(0, 229, 255, 0.78),
+          transparent 30%
+        ),
+        linear-gradient(
+          145deg,
+          #51127a,
+          #06070a 68%
+        );
+
+      box-shadow:
+        0 0 70px rgba(176, 38, 255, 0.22),
+        0 0 48px rgba(0, 229, 255, 0.12),
+        inset -20px -24px 44px rgba(0, 0, 0, 0.46),
+        inset 10px 10px 24px rgba(255, 255, 255, 0.10);
+
+      animation:
+        orbFloat 5.6s ease-in-out infinite;
+    }
+
+    .orb::before,
+    .orb::after {
+      content: "";
+
+      position: absolute;
+      inset: -20px;
+
+      border: 1px solid rgba(197, 107, 255, 0.28);
+      border-radius: 50%;
+
+      transform:
+        rotateX(66deg)
+        rotateZ(18deg);
+    }
+
+    .orb::after {
+      inset: -40px;
+
+      border-color: rgba(0, 229, 255, 0.18);
+
+      transform:
+        rotateX(72deg)
+        rotateZ(-23deg);
+    }
+
+    @keyframes orbFloat {
+      0%,
+      100% {
+        transform:
+          translateY(-50%)
+          translateY(0)
+          rotate(0deg);
+      }
+
+      50% {
+        transform:
+          translateY(-50%)
+          translateY(-8px)
+          rotate(2deg);
+      }
+    }
+
+    /* ========================================================= */
     /* RESPONSIVE                                                */
     /* ========================================================= */
 
     @media (max-width: 720px) {
       .page {
-        grid-template-rows: 220px 280px;
+        grid-template-rows: 280px 220px;
         min-height: 514px;
+      }
+
+      .ai-section {
+        height: 280px;
+      }
+
+      .nucleus-wrap {
+        top: 36%;
+
+        width: 116px;
+        height: 116px;
+      }
+
+      .nucleus {
+        inset: 23px;
+      }
+
+      .input-beam,
+      .output-beam {
+        top: 36%;
+      }
+
+      .message {
+        bottom: 20px;
       }
 
       .banner {
@@ -986,44 +1011,29 @@
       .subtitle {
         max-width: 82%;
       }
-
-      .ai-section {
-        height: 280px;
-      }
-
-      .nucleus-wrap {
-        top: 36%;
-
-        width: 116px;
-        height: 116px;
-      }
-
-      .nucleus {
-        inset: 23px;
-      }
-
-      .input-beam,
-      .output-beam {
-        top: 36%;
-      }
-
-      .message {
-        bottom: 20px;
-      }
     }
 
     @media (max-width: 480px) {
       .page {
-        grid-template-rows: 230px 300px;
+        grid-template-rows: 300px 230px;
         min-height: 544px;
-      }
-
-      .banner {
-        height: 230px;
       }
 
       .ai-section {
         height: 300px;
+      }
+
+      .message h2 {
+        max-width: 94%;
+        font-size: 17px;
+      }
+
+      .status {
+        font-size: 9px;
+      }
+
+      .banner {
+        height: 230px;
       }
 
       .content {
@@ -1037,19 +1047,9 @@
       .visual {
         width: 48%;
       }
-
-      .message h2 {
-        max-width: 94%;
-        font-size: 17px;
-      }
-
-      .status {
-        font-size: 9px;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .orb,
       .ai-section::after,
       .particle,
       .spark,
@@ -1058,7 +1058,8 @@
       .ring-two,
       .nucleus,
       .nucleus::after,
-      .status-dot {
+      .status-dot,
+      .orb {
         animation: none !important;
       }
     }
@@ -1069,29 +1070,7 @@
   <main class="page">
 
     <!-- ====================================================== -->
-    <!-- BANNER SUPERIOR                                        -->
-    <!-- ====================================================== -->
-
-    <section class="banner" aria-label="Bienvenida a SEVNEL">
-      <div class="content">
-        <h1>
-          <span id="greeting" class="gradient">Buenos días</span>,
-          <span id="name">Equipo SEVNEL</span>
-        </h1>
-
-        <p class="subtitle">
-          Aquí tienes el pulso de tu negocio en tiempo real. Revisa tus
-          oportunidades, conversiones y resultados desde un solo lugar.
-        </p>
-      </div>
-
-      <div class="visual" aria-hidden="true">
-        <div class="orb"></div>
-      </div>
-    </section>
-
-    <!-- ====================================================== -->
-    <!-- NÚCLEO OPERATIVO SEVNEL                                -->
+    <!-- 1. NÚCLEO OPERATIVO SEVNEL                             -->
     <!-- ====================================================== -->
 
     <section
@@ -1101,8 +1080,6 @@
       <div class="animation-stage" aria-hidden="true">
 
         <div class="input-beam"></div>
-
-        <!-- Partículas que entran desde la izquierda -->
 
         <span
           class="particle"
@@ -1192,8 +1169,6 @@
           "
         ></span>
 
-        <!-- Núcleo central -->
-
         <div class="nucleus-wrap">
           <div class="nucleus-glow"></div>
           <div class="ring"></div>
@@ -1202,8 +1177,6 @@
         </div>
 
         <div class="output-beam"></div>
-
-        <!-- Destellos que salen hacia la derecha -->
 
         <span
           class="spark"
@@ -1288,6 +1261,28 @@
           <span class="status-dot"></span>
           SEVNEL AI OPERANDO 24/7
         </div>
+      </div>
+    </section>
+
+    <!-- ====================================================== -->
+    <!-- 2. BANNER DE SALUDO                                    -->
+    <!-- ====================================================== -->
+
+    <section class="banner" aria-label="Bienvenida a SEVNEL">
+      <div class="content">
+        <h1>
+          <span id="greeting" class="gradient">Buenos días</span>,
+          <span id="name">Equipo SEVNEL</span>
+        </h1>
+
+        <p class="subtitle">
+          Aquí tienes el pulso de tu negocio en tiempo real. Revisa tus
+          oportunidades, conversiones y resultados desde un solo lugar.
+        </p>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="orb"></div>
       </div>
     </section>
 
